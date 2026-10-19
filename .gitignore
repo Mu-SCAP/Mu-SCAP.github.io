@@ -1,0 +1,22 @@
+# Paper PDFs and source archives are never published from this repo.
+*.pdf
+*.zip
+*.tar.gz
+*.tgz
+
+# Lossless audio (the site serves MP3 only).
+*.wav
+*.flac
+*.aif
+*.aiff
+
+# The site is a single page: ignore any other HTML file.
+# Add a "!path/to/page.html" exception here if a new page is ever needed.
+*.html
+!/index.html
+
+# OS / editor clutter.
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

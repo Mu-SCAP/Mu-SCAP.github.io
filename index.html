@@ -1,1 +1,137 @@
-Hello world!
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text-to-Music Generation via Structured Captions and Interpretable Evaluation</title>
+  <meta name="description" content="Audio examples for text-to-music generation conditioned on structured captions (SCAPs), with an inference-time prompt-to-SCAP rewriter and Music DSG evaluation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mu-scap.github.io/">
+  <meta property="og:title" content="Text-to-Music Generation via Structured Captions and Interpretable Evaluation">
+  <meta property="og:description" content="Audio examples for text-to-music generation conditioned on structured captions (SCAPs).">
+  <meta name="theme-color" content="#eb1000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23eb1000'/%3E%3Cpath d='M13 22.5V9.2l10-2.2v12.3' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Ccircle cx='10.4' cy='22.5' r='3' fill='%23fff'/%3E%3Ccircle cx='20.4' cy='19.6' r='3' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <h1>Text-to-Music Generation via <span class="accent">Structured Captions</span><br class="br-wide"> and Interpretable Evaluation</h1>
+
+      <p class="authors">
+        <span class="author"><a href="https://wjk0925.github.io/">Junkai Wu</a><sup>&#9839;&#9837;*</sup></span>
+        <span class="author"><a href="https://zhepeiw.com/">Zhepei Wang</a><sup>&#9837;</sup></span>
+        <span class="author"><a href="https://gzhu06.github.io/">Ge Zhu</a><sup>&#9837;</sup></span>
+        <span class="author"><a href="https://sites.google.com/view/sarah-lee/home">Sarah Hye-yeon Lee</a><sup>&#9837;</sup></span>
+        <span class="author"><a href="https://people.ece.uw.edu/ostendorf/">Mari Ostendorf</a><sup>&#9839;</sup></span>
+        <span class="author"><a href="https://njb.github.io/">Nicholas J. Bryan</a><sup>&#9837;</sup></span>
+      </p>
+      <p class="affiliations">
+        <span><sup>&#9839;</sup>University of Washington</span>
+        <span><sup>&#9837;</sup>Adobe Research</span>
+      </p>
+      <p class="footnote"><sup>*</sup>Work done while an intern at Adobe Research</p>
+      <p class="venue">Under Review at ICASSP 2027</p>
+
+      <nav class="links" aria-label="Project links">
+        <!-- TODO: replace href="#" with the arXiv URL and remove aria-disabled once the preprint is public. -->
+        <a class="button" href="#" aria-disabled="true" title="arXiv link coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          arXiv
+        </a>
+        <a class="button" href="#video">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path class="fill" d="M10 9.2v5.6l4.8-2.8z"/></svg>
+          Video
+        </a>
+        <a class="button" href="#examples">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5.5l11-2.2V16"/><circle cx="6.2" cy="18" r="2.8"/><circle cx="17.2" cy="16" r="2.8"/></svg>
+          Audio examples
+        </a>
+        <a class="button" href="#bibtex">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4C6.6 4 6 5 6 6.8v2.4C6 10.6 5.2 11.6 4 12c1.2.4 2 1.4 2 2.8v2.4C6 19 6.6 20 8.5 20M15.5 4c1.9 0 2.5 1 2.5 2.8v2.4c0 1.4.8 2.4 2 2.8-1.2.4-2 1.4-2 2.8v2.4c0 1.8-.6 2.8-2.5 2.8"/></svg>
+          BibTeX
+        </a>
+      </nav>
+
+      <p class="headphones">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-4a8 8 0 0 1 16 0v4"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/></svg>
+        Headphones recommended
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section id="video" class="section narrow" aria-label="Project video">
+      <!-- TODO: replace the placeholder below with the project video, e.g.
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Project video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      -->
+      <div class="video-frame video-placeholder" role="img" aria-label="Project video coming soon">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path class="fill" d="M26 21v22l18-11z"/></svg>
+        <span>Project video coming soon</span>
+      </div>
+    </section>
+
+    <section id="abstract" class="section narrow">
+      <h2>Abstract</h2>
+      <p>Text descriptions of music are central to the performance of text-to-music generation (TTM) methods, but creation of paired text information for music generation is relatively underexplored. Here, we propose training latent diffusion/flow-based music generation models conditioned on structured captions (SCAPs) and compare with typical free-form captions via a set of controlled ablations. We compare free-form vs. structured captions, partial vs. full information coverage, and global vs. temporal text information during training, by fine-tuning different configurations of a pretrained flow-based diffusion transformer (DiT) and using a multi-stage inference-time prompt re-writer. Further, we introduce a new text-alignment evaluation protocol inspired by Davidsonian Scene Graphs (DSGs) for a fine-grained, interpretable measure of faithfulness of TTM methods. With multiple metrics, we show 1) that fine-tuning our DiT on SCAPs significantly improves text-alignment on music generation outputs while also improving quality, and 2) our proposed Music DSG metric better correlates with human preference than CLAP.</p>
+    </section>
+
+    <section id="bibtex" class="section narrow">
+      <h2>BibTeX</h2>
+      <div class="bibtex">
+        <button type="button" class="copy" id="copy-bibtex">Copy</button>
+<pre><code id="bibtex-code">@article{wu_scap,
+  title   = {Text-to-Music Generation via Structured Captions and Interpretable Evaluation},
+  author  = {Wu, Junkai and Wang, Zhepei and Zhu, Ge and Lee, Sarah Hye-yeon and
+             Ostendorf, Mari and Bryan, Nicholas J.},
+  journal = {arXiv preprint arXiv:TBD},
+  year    = {TBD}
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="examples" class="section wrap">
+      <h2>Cherry-picked examples</h2>
+      <p class="intro">Prompts are captions from the <a href="https://github.com/mulab-mir/song-describer-dataset">Song Describer Dataset</a>. Each prompt is rendered by three systems:</p>
+      <dl class="legend">
+        <div>
+          <dt>Base</dt>
+          <dd>DiT trained with free-form captions, given the prompt as is.</dd>
+        </div>
+        <div>
+          <dt>Transcribe only</dt>
+          <dd>SCAP-conditioned DiT, given the partial SCAP transcribed from the prompt.</dd>
+        </div>
+        <div class="ours">
+          <dt>Transcribe + Infer <span class="tag">ours</span></dt>
+          <dd>The same DiT, given the SCAP completed by Infer.</dd>
+        </div>
+      </dl>
+      <p class="intro small">Per-clip scores: CLAP and Music DSG (text alignment) and MuQ (audio quality); higher is better, best of three in bold. Click a spectrogram to play from that point.</p>
+      <div id="cherry-list" class="examples">
+        <noscript><p class="intro">Please enable JavaScript to load the audio examples.</p></noscript>
+      </div>
+    </section>
+
+    <section id="additional" class="section wrap">
+      <h2>Additional examples</h2>
+      <div id="additional-list" class="examples">
+        <noscript><p class="intro">Please enable JavaScript to load the audio examples.</p></noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Prompts: <a href="https://github.com/mulab-mir/song-describer-dataset">Song Describer Dataset</a> (Manco et al., 2023), <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+    </div>
+  </footer>
+
+  <script src="assets/data/demos.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
