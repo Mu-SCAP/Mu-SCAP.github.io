@@ -62,16 +62,14 @@
 
   <main>
     <section id="video" class="section narrow" aria-label="Project video">
-      <!-- TODO: replace the placeholder below with the project video, e.g.
-        <div class="video-frame">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Project video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-        </div>
-      -->
-      <div class="video-frame video-placeholder" role="img" aria-label="Project video coming soon">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path class="fill" d="M26 21v22l18-11z"/></svg>
-        <span>Project video coming soon</span>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata" width="1920" height="1080"
+               poster="assets/video/scap_demo_3b1b.jpg" aria-label="SCAP project video">
+          <source src="assets/video/scap_demo_3b1b.mp4" type="video/mp4">
+          <track kind="captions" src="assets/video/scap_demo_3b1b.vtt" srclang="en" label="English">
+          Your browser does not support embedded video.
+          <a href="assets/video/scap_demo_3b1b.mp4">Download the project video</a>.
+        </video>
       </div>
     </section>
 
